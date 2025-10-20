@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Quiz = require("../models/Quiz");
+const QuizResult = require("../models/QuizResult");
 
 const submitQuiz = async (req, res) => {
   try {
@@ -42,6 +43,17 @@ const submitQuiz = async (req, res) => {
       answers: submittedAnswers,
     });
     await user.save();
+
+    // Save to QuizResult collection for admin analytics
+    const quizResult = new QuizResult({
+      quizId,
+      userId,
+      answers: submittedAnswers,
+      score,
+      total: quiz.questions.length,
+      percent: finalScore,
+    });
+    await quizResult.save();
 
     res.status(200).json({
       score: finalScore,

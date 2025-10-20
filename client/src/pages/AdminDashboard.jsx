@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
-import { PlusCircle, Edit2, Trash2 } from "lucide-react";
+import { PlusCircle, Edit2, Trash2, BarChart3 } from "lucide-react";
 import toast from "react-hot-toast";
 import { CreateQuizModal } from "../components/CreateQuizModal";
 import { EditQuizModal } from "../components/EditQuizModal";
@@ -63,8 +63,15 @@ export const AdminDashboard = () => {
                 <h1 className="text-2xl font-bold text-gray-900">Quizify</h1>
               </Link>
             </div>
-            <div className="flex items-center">
-              <span className="text-gray-700 mr-4">Welcome, {user?.name}</span>
+            <div className="flex items-center space-x-4">
+              <Link
+                to="/admin/results"
+                className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-md"
+              >
+                <BarChart3 className="h-5 w-5 mr-2" />
+                Results
+              </Link>
+              <span className="text-gray-700">Welcome, {user?.name}</span>
             </div>
           </div>
         </div>

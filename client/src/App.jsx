@@ -11,6 +11,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { AdminDashboard } from "./pages/AdminDashboard";
+import { AdminResults } from "./pages/admin/AdminResults";
 import { UserDashboard } from "./pages/UserDashboard";
 import { TakeQuiz } from "./pages/TakeQuiz";
 
@@ -29,6 +30,22 @@ export const App = () => {
               element={
                 <ProtectedRoute allowedRoles={["admin"]}>
                   <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/dashboard"
+              element={
+                <ProtectedRoute allowedRoles={["admin"]}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/results"
+              element={
+                <ProtectedRoute allowedRoles={["admin"]}>
+                  <AdminResults />
                 </ProtectedRoute>
               }
             />

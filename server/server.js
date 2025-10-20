@@ -7,6 +7,7 @@ const cors = require("cors");
 const authRouter = require("./routes/auth");
 const quizRouter = require("./routes/quizRouter");
 const quizSubmissionRouter = require("./routes/quizSubmission");
+const resultRouter = require("./routes/resultRouter");
 
 // Load env vars
 dotenv.config();
@@ -44,6 +45,7 @@ app.use((err, req, res, next) => {
 app.use("/api/auth", authRouter);
 app.use("/api/quiz", quizRouter);
 app.use("/api/quiz-submissions", quizSubmissionRouter);
+app.use("/api/results", resultRouter);
 
 const port = process.env.PORT || 5000;
 
